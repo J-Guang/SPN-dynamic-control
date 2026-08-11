@@ -1,0 +1,44 @@
+# Criss-Cross network (math_foundation.md sections 1.6 and 2.4).
+# All arrays follow the unified activity convention: inputs are activities.
+name: crisscross
+
+# Labels (documentation + deterministic ordering).
+buffers:    [b1, b2, b3]
+activities: [a1, a2, s1, s2, s3]
+resources:  [u1, u2, S1, S2]
+
+# --- Section 1 prelimit primitives -------------------------------------------
+# buffer_change P (I x J): columns are queue increments of each activity.
+#            a1  a2  s1  s2  s3
+buffer_change:
+  - [ 1,  0, -1,  0,  0]   # b1
+  - [ 0,  1,  0, -1,  0]   # b2
+  - [ 0,  0,  0,  1, -1]   # b3
+
+# resource_use A (K x J): A_kj > 0 means activity j consumes resource k.
+#            a1  a2  s1  s2  s3
+resource_use:
+  - [ 1,  0,  0,  0,  0]   # u1  (input server for a1)
+  - [ 0,  1,  0,  0,  0]   # u2  (input server for a2)
+  - [ 0,  0,  1,  1,  0]   # S1  (serves s1, s2)
+  - [ 0,  0,  0,  0,  1]   # S2  (serves s3)
+
+# rates mu (J): prelimit activity rates at n = 400.
+rates: [1.0, 0.95, 2.0, 2.0, 1.0]
+
+holding_cost:   [1.5, 1.0, 1.0]          # h (I)
+input_cost:     [0.0, 0.0, 0.0, 0.0]      # c^I (K)
+rejection_cost: [0.0, 0.0, 0.0, 0.0]      # c^D (K), limit of c^{D,(n)}/n
+
+discount: 0.01                            # rho
+
+resource_types: [input, input, processing, processing]  # kappa
+idle_allowed:   [false, false, true, true]             # iota (math_foundation 1.6): inputs no-rejection, processing idle-admissible
+
+# --- Section 2 / 3 heavy-traffic + BCP data ----------------------------------
+bcp:
+  critical_rates:     [1.0, 1.0, 2.0, 2.0, 1.0]   # mu*  (J)
+  nominal_allocation: [1.0, 1.0, 0.5, 0.5, 1.0]   # beta (J)
+  n: 400
+  b: 10.0
+  omega: 0.99

@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "diffusion-based-policy"
+version = "0.1.0"
+description = "Publication implementation of diffusion-based BCP/EWF policies for stochastic processing networks"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.10"
+dependencies = [
+    "numpy>=1.24",
+    "scipy>=1.10",
+    "pyyaml>=6.0",
+]
+
+[project.optional-dependencies]
+# Heavy backends are optional until the relevant phase needs them.
+bsde = ["tensorflow>=2.16"]
+reflection = ["numba>=0.58"]
+test = ["pytest>=7.0"]
+all = ["tensorflow>=2.16", "numba>=0.58", "pytest>=7.0"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+diffusion_based_policy = ["py.typed"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+filterwarnings = [
+    "ignore::DeprecationWarning",
+]
