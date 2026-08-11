@@ -1,4 +1,4 @@
-# Diffusion-Based BCP Policy
+# Diffusion-Based BCP Policy for SPN
 
 Clean, config-driven implementation of the diffusion-based Brownian Control
 Problem (BCP) policy for stochastic processing networks. One general
