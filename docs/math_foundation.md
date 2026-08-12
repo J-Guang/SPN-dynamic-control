@@ -115,8 +115,8 @@ Let $N_j(t)$ be the cumulative number of occurrences of activity $j$. Let $I_k(t
 $$
 \begin{aligned}
 J(q)=\inf\ \mathbb E_q\Bigg[
-&\int_0^\infty e^{-\rho t}h\cdot Q(t)\,dt\\
-&+\sum_{k\in\mathcal K_{\mathrm{proc}}}\int_0^\infty e^{-\rho t}c^I_k\,dI_k(t)+\sum_{k\in\mathcal K_{\mathrm{input}}}\int_0^\infty e^{-\rho t}c^D_k\,dD_k(t)
+&\int_0^\infty e^{-\rho t}h\cdot Q(t)\mspace{3mu}dt\\
+&+\sum_{k\in\mathcal K_{\mathrm{proc}}}\int_0^\infty e^{-\rho t}c^I_k\mspace{3mu}dI_k(t)+\sum_{k\in\mathcal K_{\mathrm{input}}}\int_0^\infty e^{-\rho t}c^D_k\mspace{3mu}dD_k(t)
 \Bigg].
 \end{aligned}
 $$
@@ -142,7 +142,7 @@ $$
 or equivalently
 
 $$
-P\,\mathrm{diag}(\mu)x=0.
+P\mspace{3mu}\mathrm{diag}(\mu)x=0.
 $$
 
 The resource utilization vector is
@@ -158,7 +158,7 @@ Solve
 $$
 \begin{aligned}
 \varrho^{\ast}=\min_{\varrho,x}\quad & \varrho\\
-\text{subject to}\quad & P\,\mathrm{diag}(\mu)x=0,\\
+\text{subject to}\quad & P\mspace{3mu}\mathrm{diag}(\mu)x=0,\\
 & (Ax)_k\le \varrho,\qquad k\in\mathcal K_{\mathrm{proc}},\\
 & x\ge0,\\
 & \text{input constraints hold.}
@@ -225,7 +225,7 @@ Heavy traffic is defined relative to a critical operating point of the static pl
 The critical pair $(\mu^{\ast},\beta)$ satisfies flow balance
 
 $$
-P\,\mathrm{diag}(\mu^{\ast})\beta=0.
+P\mspace{3mu}\mathrm{diag}(\mu^{\ast})\beta=0.
 $$
 
 It should come from a critically loaded static planning solution:
@@ -236,7 +236,7 @@ $$
 
 with $(A\beta)_k\le1$ on non-bottleneck processing stations and the input constraints from Section 1.5.
 
-The scale-$n$ rates are a diffusion-scale perturbation of the critical rates:
+The rates at scale $n$ are a diffusion-scale perturbation of the critical rates:
 
 $$
 \mu^{(n)}=\mu^{\ast}+\frac{\hat\mu}{\sqrt n}+o(n^{-1/2}).
@@ -245,13 +245,13 @@ $$
 The residual queue drift is
 
 $$
-\zeta=P\,\mathrm{diag}(\hat\mu)\beta.
+\zeta=P\mspace{3mu}\mathrm{diag}(\hat\mu)\beta.
 $$
 
 The Brownian control-direction matrix is
 
 $$
-R=-P\,\mathrm{diag}(\mu^{\ast}).
+R=-P\mspace{3mu}\mathrm{diag}(\mu^{\ast}).
 $$
 
 ### 2.2 Diffusion Approximation
@@ -260,7 +260,7 @@ The diffusion approximation rescales time by $n$ and queue lengths by $\sqrt n$.
 
 | Process | Meaning |
 |---|---|
-| $Q^n(t)\in\mathbb Z_+^I$ | queue-length vector in the scale-$n$ network |
+| $Q^n(t)\in\mathbb Z_+^I$ | queue-length vector in the network at scale $n$ |
 | $T_j^n(t)$ | cumulative effort assigned to activity $j$ by original time $t$ |
 | $S_j^n(s)$ | primitive activity clock for activity $j$ after $s$ units of effort time |
 | $N_j^n(t)=S_j^n(T_j^n(t))$ | calendar-time occurrence count for activity $j$ |
@@ -271,13 +271,13 @@ The diffusion approximation rescales time by $n$ and queue lengths by $\sqrt n$.
 The prelimit queue equation is
 
 $$
-Q^n(t)=Q^n(0)+P\,N^n(t).
+Q^n(t)=Q^n(0)+P\mspace{3mu}N^n(t).
 $$
 
 The resource constraints act on effort rates:
 
 $$
-A\,\dot T^n(t)\le e,
+A\mspace{3mu}\dot T^n(t)\le e,
 $$
 
 with equality or inequality on input resources according to the admission/rejection metadata.
@@ -287,7 +287,7 @@ The Brownian-scale resource control is introduced in the limiting BCP below as $
 After centering at $(\mu^{\ast},\beta)$, the scaled queue satisfies
 
 $$
-Z^n(t)=Z^n(0)+X^n(t)+\zeta t+R\,Y^n(t)+o(1),
+Z^n(t)=Z^n(0)+X^n(t)+\zeta t+R\mspace{3mu}Y^n(t)+o(1),
 $$
 
 where
@@ -296,7 +296,7 @@ $$
 X^n(t)=\frac{1}{\sqrt n}P\left(S^n(T^n(nt))-\mu^{(n)}\circ T^n(nt)\right).
 $$
 
-The sign convention matches the definition $Y^n=(n\beta t-T^n(nt))/\sqrt n$: positive $Y_j^n$ means activity $j$ is reduced relative to the nominal plan. This is why $R=-P\,\mathrm{diag}(\mu^{\ast})$.
+The sign convention matches the definition $Y^n=(n\beta t-T^n(nt))/\sqrt n$: positive $Y_j^n$ means activity $j$ is reduced relative to the nominal plan. This is why $R=-P\mspace{3mu}\mathrm{diag}(\mu^{\ast})$.
 
 Under the usual functional central limit assumptions,
 
@@ -307,13 +307,13 @@ $$
 where $X$ is an $I$-dimensional Brownian motion with mean zero. For independent Poisson activity clocks,
 
 $$
-\Gamma=P\,\mathrm{diag}(\mu^{\ast}\circ\beta)\,P^\top.
+\Gamma=P\mspace{3mu}\mathrm{diag}(\mu^{\ast}\circ\beta)\mspace{3mu}P^\top.
 $$
 
 The limiting diffusion state is
 
 $$
-Z(t)=Z(0)+X(t)+\zeta t+R\,Y(t),\qquad Z(t)\in\mathbb R_+^I.
+Z(t)=Z(0)+X(t)+\zeta t+R\mspace{3mu}Y(t),\qquad Z(t)\in\mathbb R_+^I.
 $$
 
 The nondegenerate discounted Brownian limit uses
@@ -330,7 +330,7 @@ The initial BCP optimizes over admissible controls $Y$.
 
 | Object | Definition |
 |---|---|
-| state equation | $Z(t)=Z(0)+X(t)+\zeta t+R\,Y(t)$ |
+| state equation | $Z(t)=Z(0)+X(t)+\zeta t+R\mspace{3mu}Y(t)$ |
 | state constraint | $Z(t)\in\mathbb R_+^I$ |
 | monotonicity matrix | $\mathsf K$ |
 | resource control | $U(t)=\mathsf K Y(t)$ |
@@ -342,7 +342,7 @@ $$
 A_0Y(t)=0.
 $$
 
-The monotonicity matrix $\mathsf K$ starts from the critical resource rows of $A$ whose idleness/no-admission is an admissible Brownian control. Slack resource rows are omitted unless a finite-$n$ bound is being kept explicitly. If activity $j$ is nonbasic, meaning $\beta_j=0$, append a row $-e_j^\top$ to $\mathsf K$. This follows from
+The monotonicity matrix $\mathsf K$ starts from the critical resource rows of $A$ whose idleness/no-admission is an admissible Brownian control. Slack resource rows are omitted unless a bound at finite $n$ is being kept explicitly. If activity $j$ is nonbasic, meaning $\beta_j=0$, append a row $-e_j^\top$ to $\mathsf K$. This follows from
 
 $$
 Y_j^n(t)=\frac{n\beta_jt-T_j^n(nt)}{\sqrt n},
@@ -374,16 +374,16 @@ Use tildes for Brownian-scale costs.
 For initial state $z$, the BCP value is
 
 $$
-J(z)=\inf_Y\ \mathbb E_z\left[\int_0^\infty e^{-\gamma t}\tilde h\cdot Z(t)\,dt+\int_0^\infty e^{-\gamma t}\tilde c\cdot dU(t)\right].
+J(z)=\inf_Y\ \mathbb E_z\left[\int_0^\infty e^{-\gamma t}\tilde h\cdot Z(t)\mspace{3mu}dt+\int_0^\infty e^{-\gamma t}\tilde c\cdot dU(t)\right].
 $$
 
 The canonical BCP uses $U$, not $D$, as the control process. If a prelimit simulator records rejected jobs $D_k^n(t)$, then for an input stream with critical opportunity rate $\bar\mu_k$,
 
 $$
-\frac{D_k^n(nt)}{\sqrt n}\Rightarrow \bar\mu_k\,U_k(t).
+\frac{D_k^n(nt)}{\sqrt n}\Rightarrow \bar\mu_k\mspace{3mu}U_k(t).
 $$
 
-This convergence alone is not enough to produce a nonzero rejection term after the $n^{-3/2}$ value normalization. The scale-$n$ rejected-job penalty must satisfy
+This convergence alone is not enough to produce a nonzero rejection term after the $n^{-3/2}$ value normalization. The rejected-job penalty at scale $n$ must satisfy
 
 $$
 \frac{c_k^{D,(n)}}{n}\to \bar c_k^D.
@@ -397,7 +397,7 @@ $$
 
 The same rule applies to other control costs that should survive in the Brownian objective: Brownian-scale control costs are limits of prelimit coefficients divided by $n$.
 
-| Scale-$n$ prelimit coefficient | Brownian coefficient |
+| Prelimit coefficient at scale $n$ | Brownian coefficient |
 |---|---|
 | $h_i^{(n)}\to h_i$ | $\tilde h_i=h_i$ |
 | $c_k^{I,(n)}/n\to \bar c_k^I$, processing idleness | $\tilde c_k=\bar c_k^I$, $k\in\mathcal K_{\mathrm{proc}}$ |
@@ -408,7 +408,7 @@ Idle and rejection costs are represented by $\tilde c$. Example-specific BCP par
 Under the heavy-traffic normalization of the value function,
 
 $$
-n^{-3/2}J^{(n)}(\lfloor\sqrt n\,z\rfloor)\to J(z).
+n^{-3/2}J^{(n)}(\lfloor\sqrt n\mspace{3mu}z\rfloor)\to J(z).
 $$
 
 Here $J^{(n)}$ denotes the Section 1 prelimit value $J$ for the $n$-th network. This is why prelimit simulation costs are divided by $n^{3/2}$ before comparison with Brownian values.
@@ -422,15 +422,15 @@ The following table uses the unified activity convention from Section 1, where c
 | State dimension | $I=3$ | $I=3$ | $I=8$ |
 | Scaling and discount | $n=400$, $\rho^{(n)}=0.01$, $\gamma=4$ | $n=400$, $\rho^{(n)}=0.01$, $\gamma=4$ | $n=400$, $\rho^{(n)}=0.01$, $\gamma=4$ |
 | Critical rates $\mu^{\ast}$ | $(1,1,2,2,1)$ | $(1,2,2,1,1,2,1,1)$ | $(1/2,1/3,1,1,1,1,1/2,1,1/2,1/2,1/4,1/4)$ |
-| Scale-$n$ rates $\mu^{(n)}$ | $(1,1-n^{-1/2},2,2,1)$ | $(1,2,2,1,1,2-n^{-1/2},1-n^{-1/2},1-n^{-1/2})$ | $\mu^{\ast}$ |
+| Rates at scale $n$, $\mu^{(n)}$ | $(1,1-n^{-1/2},2,2,1)$ | $(1,2,2,1,1,2-n^{-1/2},1-n^{-1/2},1-n^{-1/2})$ | $\mu^{\ast}$ |
 | Rates at $n=400$ | $(1,0.95,2,2,1)$ | $(1,2,2,1,1,1.95,0.95,0.95)$ | $\mu^{\ast}$ |
 | Nominal allocation $\beta$ | $(1,1,1/2,1/2,1)$ | $(1,1/2,1/2,1,0,1,1,1)$ | $(1/2,3/4,1/4,1/4,1/4,1/4,1/2,1/4,1/2,1/2,1,1)$ |
-| Control-direction matrix $R$ | $-P\,\mathrm{diag}(\mu^{\ast})$ | $-P\,\mathrm{diag}(\mu^{\ast})$ | $-P\,\mathrm{diag}(\mu^{\ast})$ |
+| Control-direction matrix $R$ | $-P\mspace{3mu}\mathrm{diag}(\mu^{\ast})$ | $-P\mspace{3mu}\mathrm{diag}(\mu^{\ast})$ | $-P\mspace{3mu}\mathrm{diag}(\mu^{\ast})$ |
 | Nonbasic activities | none | $s_5$ | none |
 | No-rejection input equality $A_0Y=0$ | $A_{\lbrace u_1,u_2\rbrace,\cdot}Y=0$ | $A_{\lbrace u_1,u_2,u_3\rbrace,\cdot}Y=0$ | none |
 | Monotonicity matrix $\mathsf K$ | $A_{\lbrace S_1,S_2\rbrace,\cdot}$ | $A_{\lbrace S_1,S_2,S_3\rbrace,\cdot}$ with one appended row $-e_{s_5}^\top$ | $A$ |
 | Perturbation $\hat\mu$ | $(0,-1,0,0,0)$ | $(0,0,0,0,0,-1,-1,-1)$ | $0$ |
-| Drift $\zeta=P\,\mathrm{diag}(\hat\mu)\beta$ | $(0,-1,0)$ | $(-1,-1,-1)$ | $0$ |
+| Drift $\zeta=P\mspace{3mu}\mathrm{diag}(\hat\mu)\beta$ | $(0,-1,0)$ | $(-1,-1,-1)$ | $0$ |
 | Covariance $\Gamma$ | diagonal $(2,2,2)$, with $\Gamma_{23}=\Gamma_{32}=-1$ | $\mathrm{diag}(4,2,2)$ | diagonal entries $1/2$; nonzero off-diagonal entries $\Gamma_{12}=\Gamma_{21}=\Gamma_{45}=\Gamma_{54}=\Gamma_{67}=\Gamma_{76}=\Gamma_{78}=\Gamma_{87}=-1/4$ |
 | Brownian holding cost $\tilde h$ | $(1.5,1,1)$ | $(1,2,3)$ | $(6,3,6,6,1,12,7,6)$ |
 | Resource-control cost $\tilde c$ | zero vector | zero vector | $(0,0,0,0.165,0.100,0.225)$ |
@@ -453,7 +453,7 @@ Start from cumulative allocation, as in the definition of $Y^n$ in Section 2.2.
 | Object | Meaning |
 |---|---|
 | $x(t)\in\mathbb R_+^J$ | normalized allocation chosen by the controller |
-| $T(t)=b\int_0^t x(s)\,ds$ | cumulative allocation at Brownian control scale |
+| $T(t)=b\int_0^t x(s)\mspace{3mu}ds$ | cumulative allocation at Brownian control scale |
 | $b>0$ | scalar control bound, with $b=O(\sqrt n)$ |
 | $\beta\in\mathbb R_+^J$ | nominal allocation |
 | $\bar Y(t)=b\beta t-T(t)$ | interior deviation from the nominal cumulative allocation |
@@ -476,13 +476,13 @@ $$
 Equivalently,
 
 $$
-Z(t)=z+X(t)+\zeta t+bR\int_0^t(\beta-x(s))\,ds+HL(t).
+Z(t)=z+X(t)+\zeta t+bR\int_0^t(\beta-x(s))\mspace{3mu}ds+HL(t).
 $$
 
 The local-time process satisfies
 
 $$
-L_i(0)=0,\qquad L_i \text{ is nondecreasing},\qquad \int_0^\infty 1_{\lbrace Z_i(t)>0\rbrace}\,dL_i(t)=0.
+L_i(0)=0,\qquad L_i \text{ is nondecreasing},\qquad \int_0^\infty 1_{\lbrace Z_i(t)>0\rbrace}\mspace{3mu}dL_i(t)=0.
 $$
 
 The matrix $Q$ is not learned. It is a fixed boundary device. Column $Q_{\cdot i}$ specifies the activity-space deviation used when the diffusion is pushed away from face $\lbrace z_i=0\rbrace$.
@@ -531,7 +531,7 @@ $$
 Let $Z^u$ be the controlled state under $u$. The modified objective is
 
 $$
-V^u(z)=\mathbb E_z\left[\int_0^\infty e^{-\gamma t}\lbrace \tilde h\cdot Z^u(t)+\tilde c\cdot \mathsf K\theta_u(Z^u(t))\rbrace\,dt+\int_0^\infty e^{-\gamma t}\chi\cdot dL(t)\right].
+V^u(z)=\mathbb E_z\left[\int_0^\infty e^{-\gamma t}\lbrace \tilde h\cdot Z^u(t)+\tilde c\cdot \mathsf K\theta_u(Z^u(t))\rbrace\mspace{3mu}dt+\int_0^\infty e^{-\gamma t}\chi\cdot dL(t)\right].
 $$
 
 The boundary-cost vector is
@@ -844,7 +844,7 @@ $$
 The reference reflected diffusion is
 
 $$
-d\bar Z(t)=\sigma\,dW(t)+\zeta\,dt+R\bar\theta(\bar Z(t))\,dt+H\,d\bar L(t),
+d\bar Z(t)=\sigma\mspace{3mu}dW(t)+\zeta\mspace{3mu}dt+R\bar\theta(\bar Z(t))\mspace{3mu}dt+H\mspace{3mu}d\bar L(t),
 \qquad \bar Z(t)\in\mathbb R_+^I.
 $$
 
@@ -889,8 +889,8 @@ gives the path identity
 $$
 \begin{aligned}
 e^{-\gamma T}V(\bar Z(T))-V(\bar Z(0))
-=&\int_0^T e^{-\gamma t}\nabla V(\bar Z(t))^\top\sigma\,dW(t)\\
-&+\int_0^T e^{-\gamma t}\lbrace \nabla V(\bar Z(t))\cdot R\bar\theta(\bar Z(t))-F(\bar Z(t),\nabla V(\bar Z(t)))\rbrace\,dt\\
+=&\int_0^T e^{-\gamma t}\nabla V(\bar Z(t))^\top\sigma\mspace{3mu}dW(t)\\
+&+\int_0^T e^{-\gamma t}\lbrace \nabla V(\bar Z(t))\cdot R\bar\theta(\bar Z(t))-F(\bar Z(t),\nabla V(\bar Z(t)))\rbrace\mspace{3mu}dt\\
 &-\int_0^T e^{-\gamma t}\chi\cdot d\bar L(t).
 \end{aligned}
 $$
@@ -905,8 +905,8 @@ $$
 \begin{aligned}
 \delta_{\eta,\phi}
 =&e^{-\gamma T}V_\eta(\bar Z(T))-V_\eta(\bar Z(0))
--\int_0^T e^{-\gamma t}G_\phi(\bar Z(t))^\top\sigma\,dW(t)\\
-&+\int_0^T e^{-\gamma t}\lbrace F(\bar Z(t),G_\phi(\bar Z(t)))-G_\phi(\bar Z(t))\cdot R\bar\theta(\bar Z(t))\rbrace\,dt\\
+-\int_0^T e^{-\gamma t}G_\phi(\bar Z(t))^\top\sigma\mspace{3mu}dW(t)\\
+&+\int_0^T e^{-\gamma t}\lbrace F(\bar Z(t),G_\phi(\bar Z(t)))-G_\phi(\bar Z(t))\cdot R\bar\theta(\bar Z(t))\rbrace\mspace{3mu}dt\\
 &+\int_0^T e^{-\gamma t}\chi\cdot d\bar L(t).
 \end{aligned}
 $$
@@ -920,7 +920,7 @@ $$
 For implementation on a grid $0=t_0<\cdots<t_N=T$, replace the stochastic integral by
 
 $$
-\sum_{m=0}^{N-1}e^{-\gamma t_m}G_\phi(\bar Z(t_m))^\top\sigma\,\Delta W_m,
+\sum_{m=0}^{N-1}e^{-\gamma t_m}G_\phi(\bar Z(t_m))^\top\sigma\mspace{3mu}\Delta W_m,
 $$
 
 and replace the time and boundary integrals by corresponding Riemann sums. After training, use $G_\phi$ in the policy-lifting rule of Section 5.
@@ -931,7 +931,7 @@ The BCP solution gives a value gradient on diffusion scale. Policy lifting turns
 
 ### 5.1 State Mapping
 
-At a decision epoch in the scale-$n$ queueing system, observe the queue vector
+At a decision epoch in the queueing system at scale $n$, observe the queue vector
 
 $$
 q\in\mathbb Z_+^I.
@@ -972,7 +972,7 @@ $$
 | $Ca\le q$ | selected service activities cannot consume unavailable jobs |
 | $A_0a=A_0\beta$ | no-rejection input streams are always admitted |
 
-If the simulator allows fractional effort over a decision interval, replace $\lbrace 0,1\rbrace^J$ by the appropriate continuous action set. If the model has explicit rejection actions rather than input idleness, include those actions in $\mathcal A(q)$ and charge them using the scale-$n$ rejected-job costs from Section 2.3.
+If the simulator allows fractional effort over a decision interval, replace $\lbrace 0,1\rbrace^J$ by the appropriate continuous action set. If the model has explicit rejection actions rather than input idleness, include those actions in $\mathcal A(q)$ and charge them using the rejected-job costs at scale $n$ from Section 2.3.
 
 If there are no no-rejection input rows, the equality $A_0a=A_0\beta$ is vacuous.
 
